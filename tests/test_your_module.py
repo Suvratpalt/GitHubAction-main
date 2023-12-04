@@ -12,3 +12,14 @@ def test_is_file_available(tmp_path):
     # Test with a non-existing file
     non_existing_file = tmp_path / "non_existing_file.txt"
     assert not your_module.is_file_available(non_existing_file)
+
+def test_is_excel_file(tmp_path):
+    # Test with a valid Excel file
+    excel_file = tmp_path / "test_file.xlsx"
+    excel_file.touch()
+    assert your_module.is_excel_file(excel_file)
+
+    # Test with a non-Excel file
+    non_excel_file = tmp_path / "non_excel_file.txt"
+    non_excel_file.touch()
+    assert not your_module.is_excel_file(non_excel_file)
